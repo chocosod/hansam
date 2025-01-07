@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤 애니메이션</title>
+    <style>
+       .section{
+  margin-top: 1000px;
+  margin-bottom: 1000px;
+  contain: paint;
+  height: 300vh;
+}
+
+.scroll-box{
+  width: 200vw;
+  height: 100vh;
+  background: linear-gradient(90deg, #abc123,#321cba);
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+    </style>
+</head>
+<body>
+    <div></div>
+    <div class="section">
+        <div class="scroll-box">
+          <p style="font-size: 60px; color: white;padding: 300px;">가로 스크롤 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+        </div>
+      </div>
+
+    <script>
+       window.addEventListener('scroll',function(){
+  let transformX = -1 / 18 * window.scrollY + 1000 / 18
+
+  if(transformX < -100){
+    document.querySelector('.scroll-box').style.transform = `translateX(-100vw)`
+  }
+  else if(transformX < 0){
+    document.querySelector('.scroll-box').style.transform = `translateX(${transformX}vw)`
+  }
+})
+    </script>
+</body>
+</html>
