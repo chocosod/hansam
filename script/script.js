@@ -34,7 +34,7 @@ gsap.utils.toArray(hansams).forEach((hansam, i)=>{
     ScrollTrigger.create({
         trigger:hansams,
         start:'top 75%',
-        markers: true,
+        //markers: true,
         once: true,
         onEnter:() =>{
             const delay =[0.2, 1.2, 0.4, 1.4, 0.6, 0.8, 1.6, 1.0]
@@ -132,7 +132,7 @@ gsap.utils.toArray(prides).forEach((pride, i)=>{
     });
 });
 
-//@inquery섹션
+//#inquery섹션
 const inquerys = document.querySelectorAll('#inquery .item');
 
 gsap.utils.toArray(inquerys).forEach((inquery, i) =>{
@@ -142,7 +142,7 @@ gsap.utils.toArray(inquerys).forEach((inquery, i) =>{
         trigger:inquery,
         start:'top 75%',
         //onece: true,
-        markers: true,
+        //markers: true,
         onEnter:()=>{
             gsap.to(inquery,
                 {
@@ -155,9 +155,10 @@ gsap.utils.toArray(inquerys).forEach((inquery, i) =>{
     });
 });
 
+//#horizon섹션
 
+//1.
 // const animationWrap = document.querySelector('.animation-wrap');
-
 // gsap.to(animationWrap, {
 //     x: -((animationWrap.scrollWidth - window.innerWidth)  ), // 스크롤 시 이동할 거리
 //     scrollTrigger: {
@@ -168,85 +169,81 @@ gsap.utils.toArray(inquerys).forEach((inquery, i) =>{
 //         scrub: 1 // 부드러운 스크롤
 //     }
 // });
-    // gsap.registerPlugin(ScrollTrigger);
-    // ScrollTrigger.matchMedia({
-    //     '(min-width: 1024px)' :function(){
-    //         let list = gsap.utils.toArray('#horizon ul li');
-    //         let scrollTween = gsap.to(list,{
-    //             xPercent : -100 * (list.length - 2), // 원리 리스트의 갯수보다 1을 빼서 길이를 구한 후에 가로로 이동
-    //             ease:'none',
-    //             scrollTrigger:{
-    //                 trigger:'#horizon',
-    //                 pin: true,
-    //                 scrub: 1,
-    //                 start: 'center center',
-    //                 end: '300%',    //뷰포트 높이의 300%이며 숫자가 높아질수록 느려진다.
-    //                 markers:true
-    //             }
-    //         })
-    //     }
-    // });//end:ScrollTween
 
-    // let sections = gsap.utils.toArray(".horizon_system");
+//2.
+// gsap.registerPlugin(ScrollTrigger);
+// ScrollTrigger.matchMedia({
+//     '(min-width: 1024px)' :function(){
+//         let list = gsap.utils.toArray('#horizon ul li');
+//         let scrollTween = gsap.to(list,{
+//             xPercent : -100 * (list.length - 2), // 원리 리스트의 갯수보다 1을 빼서 길이를 구한 후에 가로로 이동
+//             ease:'none',
+//             scrollTrigger:{
+//                 trigger:'#horizon',
+//                 pin: true,
+//                 scrub: 1,
+//                 start: 'center center',
+//                 end: '300%',    //뷰포트 높이의 300%이며 숫자가 높아질수록 느려진다.
+//                 markers:true
+//             }
+//         })
+//     }
+// });//end:ScrollTween
 
-    // gsap.to(sections, {
-    //     xPercent: -100 * (sections.length - 1),
-    //     ease: "none",
-    //     scrollTrigger: {
-    //         trigger: "#horizon",
-    //         pin: true,
-    //         scrub: 1,
-    //         snap: 1 / (sections.length - 1),
-    //         end: "+=7000",
-    //         // end: document.querySelector("#parallax__cont").offsetWidth,
-    //     }
-    // });
+//3.
+// let sections = gsap.utils.toArray(".horizon_system");
+// gsap.to(sections, {
+//     xPercent: -100 * (sections.length - 1),
+//     ease: "none",
+//     scrollTrigger: {
+//         trigger: "#horizon",
+//         pin: true,
+//         scrub: 1,
+//         snap: 1 / (sections.length - 1),
+//         end: "+=7000",
+//         // end: document.querySelector("#parallax__cont").offsetWidth,
+//     }
+// });
 
    
+//4.
+// let wrap = gsap.utils.toArray('.horizon_wrap');
+// console.log(wrap.length)
+// let scrollTween = gsap.to(wrap,{
+//     xPercent: -100 * (wrap.length - 0.5),
+//     ease:'none',
+//     scrollTrigger:{
+//         trigger: '.horizon_wrap',
+//         pin:true,
+//         scrub:1,
+//         start:'center center',
+//         end: 'bottom top',
+//         markers:true
+//     }
+// });
 
-    // let wrap = gsap.utils.toArray('.horizon_wrap');
-    // console.log(wrap.length)
-    // let scrollTween = gsap.to(wrap,{
-    //     xPercent: -100 * (wrap.length - 0.5),
-    //     ease:'none',
-    //     scrollTrigger:{
-    //         trigger: '.horizon_wrap',
-    //         pin:true,
-    //         scrub:1,
-    //         start:'center center',
-    //         end: 'bottom top',
-    //         markers:true
-    //     }
-    // });
+//5.
+const horizontal = document.querySelector("#horizon");
+const sections = gsap.utils.toArray("#horizon ul li");
 
-
-    const horizontal = document.querySelector("#horizon");
-    const sections = gsap.utils.toArray("#horizon ul li");
-    
-    gsap.to(sections, {
-        xPercent: -100 * (sections.length - 1),
-        ease: "none",
-        scrollTrigger: {
-            trigger: horizontal,
-            start: "top top",
-            end: () =>  "+=" + (horizontal.offsetWidth - innerWidth)*'800%',
-            pin: true,
-            scrub: 1,
-            snap: {
-                snapTo: 1 / (sections.length - 1),
-                inertia: false,
-                duration: {min: 0.1, max: 0.1}
-            },
-            invalidateOnRefresh: true,
-            anticipatePin: 1
-        }
-    });
-
-
-
-
-
-
+gsap.to(sections, {
+    xPercent: -100 * (sections.length - 1),
+    ease: "none",
+    scrollTrigger: {
+        trigger: horizontal,
+        start: "top top",
+        end: () =>  "+=" + (horizontal.offsetWidth - innerWidth)*'800%',
+        pin: true,
+        scrub: 1,
+        snap: {
+            snapTo: 1 / (sections.length - 1),
+            inertia: false,
+            duration: {min: 0.1, max: 0.1}
+        },
+        invalidateOnRefresh: true,
+        anticipatePin: 1
+    }
+});
 
    
     const swiper = new Swiper('.swiper', {
